@@ -6,9 +6,9 @@ Basic Setup:
 - Mac OS X El Capitan
 
 Installation and Configuration
-1) Clone git repository as new Plugin-Project
-2) Add Libaries* to the folder /lib
-3) Adjust paths in ga_meets_fide.handlers.SampleHandler.java
+- Clone git repository as new Plugin-Project
+- Add Libaries* to the folder /lib
+- Adjust paths in ga_meets_fide.handlers.SampleHandler.java
 
 Libs:
 - commons-math3-3.6.1.jar from http://commons.apache.org/proper/commons-math/download_math.cgi (Binaries)
