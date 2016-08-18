@@ -2,7 +2,7 @@ Tooling of "Fault-aware Pareto Frontier Exploration for Dependable System Archit
 
 Basic Setup:
 - Eclipse Mars2 (RCP)
-- FeatureIDE 2.7.5 Plug-In (http://wwwiti.cs.uni-magdeburg.de/iti_db/research/featureide/)
+- FeatureIDE 2.7.5 Plug-In (update site: http://wwwiti.cs.uni-magdeburg.de/iti_db/research/featureide/deploy/)
 - JavaSE-1.8
 - Mac OS X El Capitan
 
