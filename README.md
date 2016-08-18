@@ -7,10 +7,12 @@ Basic Setup:
 - Mac OS X El Capitan
 
 Installation
-- Clone git repository as new Plugin-Project
-- Add Libaries to the folder /lib
+- Clone /modcomp as new Plugin-Project in Eclipse
+- Add Libaries* to the folder /lib
   - commons-math3-3.6.1.jar (http://commons.apache.org/proper/commons-math/download_math.cgi  Binaries)
   - jmetal4.5.jar (https://sourceforge.net/projects/jmetal/files/jmetal4.5/) 
+
+*not part of this repository due to copyright issues.
 
 Configuration in src/modcomp/Config.java:
 - paths
