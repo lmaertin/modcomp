@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and abstract="true" mandatory="true" name="VendingMachine">
+				<description>
+					pollution
+					tastedeviation
+					responsetime
+					energyconsumption
+				</description>
+				<or abstract="true" mandatory="true" name="UserInterface">
+					<feature mandatory="true" name="Naturell">
+						<description>
+							responsetime=0.3
+						</description>
+					</feature>
+					<feature mandatory="true" name="Sparkling">
+						<description>
+							responsetime=0.4
+						</description>
+					</feature>
+					<feature mandatory="true" name="Coke">
+						<description>
+							responsetime=0.9
+						</description>
+					</feature>
+				</or>
+				<or abstract="true" mandatory="true" name="PaymentMethods">
+					<feature mandatory="true" name="CoinPayment">
+						<description>
+							responsetime=0.3
+							energyconsumption=0.3
+						</description>
+					</feature>
+					<feature mandatory="true" name="NotePayment">
+						<description>
+							responsetime=0.4
+							energyconsumption=0.4
+						</description>
+					</feature>
+					<feature mandatory="true" name="CardPayment">
+						<description>
+							responsetime=0.2
+							energyconsumption=0.8
+						</description>
+					</feature>
+				</or>
+				<and abstract="true" mandatory="true" name="FillMeters">
+					<feature abstract="true" mandatory="true" name="WaterMeter">
+						<description>
+							
+						</description>
+					</feature>
+					<feature name="PostmixMeter">
+						<description>
+							tastedeviation=0.1
+							responsetime=0.4
+							energyconsumption=0.4
+						</description>
+					</feature>
+					<feature name="CollectorMeter">
+						<description>
+							pollution=0.9
+							tastedeviation=0.5
+							responsetime=0.5
+							energyconsumption=0.7
+						</description>
+					</feature>
+					<feature abstract="true" mandatory="true" name="CupMeter">
+						<description>
+							
+						</description>
+					</feature>
+				</and>
+				<feature name="Thermometer">
+					<description>
+						tastedeviation=0.1
+						energyconsumption=0.8
+					</description>
+				</feature>
+				<or abstract="true" mandatory="true" name="Mixing">
+					<feature mandatory="true" name="Postmix">
+						<description>
+							responsetime=0.5
+							energyconsumption=0.7
+						</description>
+					</feature>
+					<feature mandatory="true" name="CO2">
+						<description>
+							responsetime=0.1
+							energyconsumption=0.4
+						</description>
+					</feature>
+				</or>
+				<alt abstract="true" mandatory="true" name="FlowControl">
+					<feature mandatory="true" name="Pump">
+						<description>
+							tastedeviation=0.5
+							responsetime=0.1
+							energyconsumption=0.7
+						</description>
+					</feature>
+					<feature mandatory="true" name="Gravity">
+						<description>
+							tastedeviation=0.3
+							responsetime=0.4
+							energyconsumption=0.1
+						</description>
+					</feature>
+				</alt>
+				<or abstract="true" mandatory="true" name="MagnetValves">
+					<feature mandatory="true" name="WaterValve">
+						<description>
+							energyconsumption=0.2
+						</description>
+					</feature>
+					<feature mandatory="true" name="CokeValve">
+						<description>
+							energyconsumption=0.3
+						</description>
+					</feature>
+				</or>
+				<or abstract="true" mandatory="true" name="Injector">
+					<feature mandatory="true" name="WaterInjector">
+						<description>
+							responsetime=0.3
+							energyconsumption=0.2
+						</description>
+					</feature>
+					<feature mandatory="true" name="CokeInjector">
+						<description>
+							responsetime=0.2
+							energyconsumption=0.4
+						</description>
+					</feature>
+				</or>
+				<and abstract="true" mandatory="true" name="MoneyChanger">
+					<feature name="ChangeCoins">
+						<description>
+							pollution=0.5
+						</description>
+					</feature>
+					<feature name="ChangeNotes">
+						<description>
+							pollution=0.2
+						</description>
+					</feature>
+				</and>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<not>
+						<var>CO2</var>
+					</not>
+					<conj>
+						<not>
+							<var>Sparkling</var>
+						</not>
+						<not>
+							<var>Coke</var>
+						</not>
+					</conj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<disj>
+						<not>
+							<var>PostmixMeter</var>
+						</not>
+						<not>
+							<var>Postmix</var>
+						</not>
+					</disj>
+					<not>
+						<var>Coke</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<conj>
+						<var>Coke</var>
+						<not>
+							<var>CokeInjector</var>
+						</not>
+					</conj>
+					<conj>
+						<var>CollectorMeter</var>
+						<conj>
+							<var>WaterInjector</var>
+							<var>Pump</var>
+						</conj>
+					</conj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<not>
+						<var>ChangeNotes</var>
+					</not>
+					<not>
+						<var>NotePayment</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<not>
+						<var>ChangeCoins</var>
+					</not>
+					<conj>
+						<not>
+							<var>CoinPayment</var>
+						</not>
+						<not>
+							<var>NotePayment</var>
+						</not>
+					</conj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<conj>
+						<disj>
+							<var>Naturell</var>
+							<var>Sparkling</var>
+						</disj>
+						<not>
+							<var>WaterInjector</var>
+						</not>
+					</conj>
+					<conj>
+						<var>CollectorMeter</var>
+						<conj>
+							<var>CokeInjector</var>
+							<var>Pump</var>
+						</conj>
+					</conj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<not>
+						<var>WaterValve</var>
+					</not>
+					<conj>
+						<not>
+							<var>Naturell</var>
+						</not>
+						<not>
+							<var>Sparkling</var>
+						</not>
+					</conj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<not>
+						<var>CokeValve</var>
+					</not>
+					<not>
+						<var>Coke</var>
+					</not>
+				</imp>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

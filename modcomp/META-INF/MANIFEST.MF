@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ModComp Tool
+Bundle-SymbolicName: modcomp;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: modcomp.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ de.ovgu.featureide.fm.core
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .,
+ lib/commons-math3-3.6.1.jar,
+ lib/jmetal4.5.jar
+Bundle-Vendor: Lukas Maertin
