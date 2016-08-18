@@ -25,7 +25,7 @@ Configuration in src/modcomp/Config.java:
   - number of iterations
 
 Usage
-1) Start plug-in as Eclipse Application
-2) Click "Start optimization" or press "cmd+F5" or "ctrl+F5"
-3) Open console and wait...
-4) Explore results in output dir (default: /output)
+- Start plug-in as Eclipse Application
+- Click "Start optimization" or press "cmd+F5" or "ctrl+F5"
+- Open console view, explore progress and wait...
+- Explore results in output dir (default: /output)
